@@ -1,5 +1,6 @@
 package com.example;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,41 +9,41 @@ class AlexTest {
 
     private Alex alex;
 
-    @Test
+    @BeforeEach
     void setUp() throws Exception {
         alex = new Alex();
     }
 
     @Test
-    void testGetKittens() throws Exception {
-        setUp();
+    void testGetKittens() {
         assertEquals(0, alex.getKittens());
     }
 
     @Test
     void testDoesHaveMane() throws Exception {
-        setUp();
         assertTrue(alex.doesHaveMane()); // Алекс — самец, у него есть грива
     }
 
     @Test
-    void testGetFriends() throws Exception {
-        setUp();
+    void testGetFriends() {
         List<String> expectedFriends = List.of("Марти", "Глория", "Мелман");
         assertEquals(expectedFriends, alex.getFriends());
     }
 
     @Test
-    void testGetPlaceOfLiving() throws Exception {
-        setUp();
+    void testGetPlaceOfLiving() {
         assertEquals("Нью‑Йоркский зоопарк", alex.getPlaceOfLiving());
     }
 
     @Test
-    void testGetFood() throws Exception {
-        setUp();
+    void testGetFoodIsNotNull() throws Exception {
         List<String> food = alex.getFood();
         assertNotNull(food);
+    }
+
+    @Test
+    void testGetFoodIsNotEmpty() throws Exception {
+        List<String> food = alex.getFood();
         assertFalse(food.isEmpty());
     }
 }
